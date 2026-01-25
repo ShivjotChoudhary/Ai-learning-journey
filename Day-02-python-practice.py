@@ -41,3 +41,7 @@ dic.update({"physics":int(input("Enter the marks of Student 1:"))})
 dic.update({"Chemistry":int(input("Enter the marks of Student 2:"))})
 dic.update({"Math": int(input("Enter the marks of Student 3:"))})
 print(dic)
+# Q40) Figure out a way to store 9 & 9.0 as seperate values in the set.
+ #(you can take help of built-in data types)
+set = {(9,9.0)}
+print(set)
