@@ -28,7 +28,7 @@ def func_tion(n):
     b*=a
   print(b)
 func_tion(4)
-/
+
 #Q67) wap to convert USD to INR.(using function)
 #1 USD. = 91.91
 def con_vert(n):
