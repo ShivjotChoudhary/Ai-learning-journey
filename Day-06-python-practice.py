@@ -35,3 +35,4 @@ def con_vert(n):
   print(n,"USD =",n*91.91,"INR")
 
 con_vert(int(input("Enter Currency: ")))
+/
