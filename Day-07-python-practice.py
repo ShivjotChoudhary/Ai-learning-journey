@@ -31,3 +31,26 @@ def li_st(a,b=0):
   return li_st(a,b+1)
 d = [8,3,4,5,"shiv","rohit"]
 li_st(d)
+#Q72) File I/O  in python:-
+f = open("/content/data.txt","r")
+data = f.read()
+print(data)
+f.close()
+
+#Q73) Reading only first few letters:-
+f = open("/content/data.txt","r")
+data = f.read(9)
+print(data)
+f.close()
+
+#Q74) Read only Line :-
+f = open("/content/data.txt","r")
+bb = f.read()#once the file is readed once then can't be printed again.
+print(bb)
+bb = f.read()
+print(bb)
+data = f.readline()# uses /n at the end by implicit 
+print(data)
+data = f.readline()# prints 2nd line 
+print(data)
+f.close()
