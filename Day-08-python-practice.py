@@ -13,5 +13,5 @@ f.close()
 #Q78) create a new file "practice.txt" using python. Add the following data in it :-
 with open("practice.txt","w") as a:
   b = a.write(" Hi everyone \n we are learning file I/O \n using java \n I like programming in java")
-
+/
 
