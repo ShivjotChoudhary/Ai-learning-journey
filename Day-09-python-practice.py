@@ -83,7 +83,7 @@ print(type(arrayy))
 aa = np.array([[1,2,3,4,5,7]],np.int32)
 print(aa[0,2])# showing the 0 row , 2 column element = 3.
 print(aa.shape)#used for checking  how many rows and cloumn are there.
-print(aa.dtype)# checking type like int,float,or strings. also  tells storage?
+print(aa.dtype)# checking type like int,float,or strings. also  tells storage?-
 print(aa.ndim)# to check dimentions
 
 #Q88) changing the value in a array.
