@@ -1,5 +1,5 @@
 #03/03/2026
-# use of reshape(1-row,2-column)
+# use of reshape(1-row,2-column)=
 import numpy as np
 x.reshape(3,3)
 
