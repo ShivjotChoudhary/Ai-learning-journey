@@ -31,7 +31,7 @@ I used **Tkinter** to build a graphical user interface and **PyInstaller** to pa
 
 ---
 
-### Key takeaway
+### Key takeaway 
 > A Python project can be transformed into a real desktop application and shared professionally without traditional app development.
 
 ---
