@@ -1,0 +1,80 @@
+16/feb/2026
+
+
+## first html:--
+<h1>Avengers</h1>
+<h2>Iron man</h2>
+<p>Also goes by name <b>Tony Stark</b></p>
+<h2>Captain America</h2>
+<p>Also goes by name <b>Steve Rogers</b></p>
+<h2>Hulk</h2>
+<p>Also goes by the name <b>Bruce Banner</b></p>
+
+
+## Boiler plate:-
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Boilerplate</title>
+    </head>
+    <body>
+        <p>Hello world</p>
+    </body>
+</html>
+
+##Unordered list:-
+
+<!-- Unordered list -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unordered list</title>
+ </head>
+ <body>
+    <ul>
+        <li>
+            apple
+        </li>
+        <li>
+            banana
+        </li>
+        <li>
+            mango
+        </li>
+    </ul>
+    <ol type="A">
+        <li>
+            apple
+        </li>
+        <li>
+            banana
+        </li>
+        <li>
+            mango
+        </li>
+    </ol>
+    
+ </body>
+ </html>
+
+## Tags:-
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tags</title>
+</head>
+<body>
+    <a href="https://www.google.com/">
+        Google
+    </a>
+<img src="ironman.png" alt="Ironman" height="60px" width="100px">
+</body> 
+</html>
