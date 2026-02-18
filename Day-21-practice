@@ -1,1 +1,46 @@
+18/02/2026
 
+# use of .groupby()
+df.groupby("Age")
+
+
+#This groups by Sex and counts rows.
+df.groupby("Sex").size()
+
+
+#Average Age by Gender
+"""
+Step breakdown:
+
+Group by Sex
+
+Select Age
+
+Calculate mean
+"""
+df.groupby("Sex")["Age"].mean()
+
+
+#Task 1: Survival Rate by Gender
+df.groupby("Sex")["Survived"].mean() * 100
+
+df
+
+#Task 2 Find average fare per class.
+df.groupby("Pclass")["Fare"].mean()
+
+#Task 3: Create a New Column
+#FamilySize = SibSp + Parch
+df["FamilySize"] = df["SibSp"]+df["Parch"]
+df[["SibSp","Parch","FamilySize"]].head()
+
+#Did passengers traveling alone survive less than those traveling with family?
+def lone(a):
+  if a==0:
+    return "alone"
+  else:
+    return "notalone"
+df["notalone"]= df["FamilySize"].apply(lone)
+df["notalone"].head()
+
+df.groupby("notalone")["Survived"].mean() *100
