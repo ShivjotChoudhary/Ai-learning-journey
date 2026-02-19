@@ -1,1 +1,30 @@
+19/feb/2026
 
+df.head()
+
+#Task 4: Survival Rate of 3rd Class Males 
+survival_rate = df[(df["Pclass"]==3) & (df["Sex"]=="male")]["Survived"].mean()*100
+survival_rate
+
+#🎯 Task 5: Survival Rate by Passenger Class 
+#Did children survive more than adults?
+df.groupby("Pclass")["Survived"].mean()*100
+
+#🎯 Task 6: Age-Based Survival Analysis
+def aa(a):
+  if a<=18:
+    return "Child"
+  else:
+    return "Adult"
+
+df["children"] = df["Age"].apply(aa)
+df[df["Age"]<=18].head()
+
+df.head(10)
+
+# Age-Based Survival Analysis:-
+df.groupby(["children"])["Survived"].mean()*100
+
+df[df["Age"].isna()]
+
+df.iloc[5]["Age"]
