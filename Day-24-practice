@@ -1,0 +1,76 @@
+18/mar/2026
+
+#import neccessary  libraries:-
+import pandas as pd
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# pre-processing:-
+df.info()
+
+#Finding missing value:-
+df.isnull().sum()
+
+#percentage of missing value :-
+df.isnull().sum()/df.shape[0]*100
+
+#finding duplicate :-
+df.duplicated().sum()
+
+#identifying garbage values:-
+for i in df.select_dtypes(include="object").columns:
+  print(df[i].value_counts())
+  print("***"*10)
+
+df.drop(["Name","Ticket","Cabin"], axis=1, inplace=True)
+
+# Step:4)exploratory data analysis(EDA).
+#descriptive statistics:-
+df.describe().T
+
+df.describe(include="object")
+
+#histogram to understand the distribution:-
+#📊 1️⃣ Basic Histogram (Single Column)
+#Example for Age:
+#👉 Shows how Age values are distributed
+import matplotlib.pyplot as plt
+
+plt.hist(df["Age"])
+plt.xlabel("Age")
+plt.ylabel("Frequency-no.of peoples")
+plt.show()
+
+#📊 2️⃣ Histogram for another feature (Important)
+#Let’s take Fare (very important in Titanic)
+plt.hist(df["Fare"], bins=20)
+plt.xlabel("Fare")
+plt.ylabel("Frequency")
+plt.title("Fare Distribution")
+plt.show()
+
+#using histogram:-
+for i in df.select_dtypes(include="number").columns:
+    sns.histplot(data=df,x=i)
+    plt.show()
+
+#using boxplot:-
+for i in df.select_dtypes(include="number").columns:
+    sns.boxplot(data=df,x=i)
+    plt.show()
+
+df.columns 
+
+
+df.select_dtypes(include="number").columns 
+
+#scatter plot to understand the relationship 
+for i in ['PassengerId', 'Pclass', 'Age', 'SibSp', 'Parch', 'Fare']:
+  sns.scatterplot(data=df,x=i,y='Survived')
+  plt.show()
+
+s = df.select_dtypes(include="number").corr()
+s
+
+sns.heatmap(s,annot=True)
