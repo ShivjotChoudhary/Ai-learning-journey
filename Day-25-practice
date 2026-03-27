@@ -1,1 +1,122 @@
+19 mar-2026
 
+#Missing value treatment:-
+#choose the method of imputing missing value
+#like mean,median,mode or KNNIputer
+df.isnull().sum()
+
+#2️⃣ Handle Missing Values
+#🔹 Age (Numerical)
+df["Age"].fillna(df["Age"].mean(), inplace=True)
+
+#🔹 Embarked (Categorical)
+#👉 Best method = fill with mode (most frequent)
+df["Embarked"].fillna(df["Embarked"].mode()[0], inplace=True)
+
+df.isnull().sum()
+
+
+#Step 6:- outlier treatment:-
+#Step 1: Calculate Q1, Q3
+#🚀 Code Explanation (Line by Line)
+
+
+
+#🔹 Step 1: Q1
+Q1 = df["Fare"].quantile(0.25)
+#👉 Finds value below which 25% data lies
+
+#🔹 Step 2: Q3
+Q3 = df["Fare"].quantile(0.75)
+#👉 Finds value below which 75% data lies
+
+#🔹 Step 3: IQR
+IQR = Q3 - Q1
+#👉 Range of middle 50% data
+
+#🔹 Step 4: Limits
+lower = Q1 - 1.5 * IQR
+upper = Q3 + 1.5 * IQR
+#👉 Defines acceptable range
+
+#🔹 Step 5: Detect Outliers
+outliers = df[(df["Fare"] < lower) | (df["Fare"] > upper)]
+#👉 Finds rows outside range
+
+#🔹 Step 6: Remove Outliers
+df = df[(df["Fare"] >= lower) & (df["Fare"] <= upper)]
+# 👉 Keeps only normal data
+
+#🧠 Simple Visualization in Mind
+# Normal Range:  |----Q1----[DATA]----Q3----|
+# Outliers:      <-------------------------->
+
+#same upper thing:-
+# Q1 = df["Fare"].quantile(0.25)
+# Q3 = df["Fare"].quantile(0.75)
+# IQR = Q3 - Q1
+
+# lower = Q1 - 1.5 * IQR
+# upper = Q3 + 1.5 * IQR
+
+# df = df[(df["Fare"] >= lower) & (df["Fare"] <= upper)]
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+sns.boxplot(x=df["Fare"])
+plt.show()
+
+#step 7 🚀 1️⃣ Duplicate Value Treatment
+#✅ Check duplicates
+df.duplicated().sum()
+
+#👉 If result > 0 → duplicates exist
+
+#✅ Remove duplicates
+df.drop_duplicates(inplace=True)
+
+#👉 Keeps only unique rows
+
+#checking garbage values(categorical):-
+for i in df.select_dtypes(include="object").columns:
+    print(df[i].unique())
+
+#step:8 Encoding of Data:-
+from sklearn.preprocessing import LabelEncoder
+
+le = LabelEncoder()
+
+df["Sex"] = le.fit_transform(df["Sex"])
+df["Embarked"] = le.fit_transform(df["Embarked"])
+
+df.head()
+
+#step 9 --- Train-Test Split:-
+#✅ Step 1: Separate Features & Target
+X = df.drop("Survived", axis=1)   # input features
+y = df["Survived"]                # target
+
+#✅ Step 2: Apply Train-Test Split
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(
+    X, y, test_size=0.2, random_state=42
+)
+
+#✅ Step 3: Check Shapes (Important)
+print(X_train.shape)
+print(X_test.shape)
+print(y_train.shape)
+print(y_test.shape)
+
+# 🔥 NEXT STEP (VERY IMPORTANT)
+
+# 👉 Normalization
+
+from sklearn.preprocessing import MinMaxScaler
+
+scaler = MinMaxScaler()
+
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
