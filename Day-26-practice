@@ -1,1 +1,96 @@
+21-mar-2026
 
+#🚀 Step: First ML Model (Logistic Regression)
+# ✅ Step 1: Import Model
+from sklearn.linear_model import LogisticRegression
+
+# ✅ Step 2: Create Model
+model = LogisticRegression()
+
+# ✅ Step 3: Train Model
+model.fit(X_train, y_train)
+#👉 Model learns patterns from training data
+
+# ✅ Step 4: Make Predictions
+y_pred = model.predict(X_test)
+
+# 👉 Predicts survival for test data
+
+# 🎯 Now Evaluate Model
+# ✅ Confusion Matrix
+from sklearn.metrics import confusion_matrix
+
+print(confusion_matrix(y_test, y_pred))
+
+# ✅ Accuracy
+from sklearn.metrics import accuracy_score
+
+accuracy_score(y_test, y_pred)
+
+Practice on this dataset :-
+
+# 🚀 1️⃣ Practice Prediction (Titanic)
+# ✅ Step 1: Create new passenger
+new_data = pd.DataFrame(
+    [[1, 3, 1, 22, 1, 0, 7.25, 2]],
+    columns=X.columns   # 👈 VERY IMPORTANT
+)
+# 👉 Same order as your features
+
+# ✅ Step 2: Apply scaling
+new_data = scaler.transform(new_data)
+
+X.columns
+
+# ✅ Step 3: Predict
+prediction = model.predict(new_data)
+print(prediction)
+if prediction[0] == 1:
+    print("Survived")
+else:
+    print("Not Survived")
+
+#Saving the model
+import pickle
+
+pickle.dump(model, open("titanic_model.pkl", "wb"))
+pickle.dump(scaler, open("scaler.pkl", "wb"))
+
+#🚀 Step 2: Download to your laptop
+from google.colab import files
+
+files.download("titanic_model.pkl")
+files.download("scaler.pkl")
+pickle.dump(X.columns, open("columns.pkl", "wb"))
+files.download("columns.pkl")
+
+steps for using anywhere -
+
+#upload to collab first :-
+from google.colab import files
+
+uploaded = files.upload()
+
+#load files :-
+import pickle
+
+model = pickle.load(open("titanic_model.pkl", "rb"))
+scaler = pickle.load(open("scaler.pkl", "rb"))
+columns = pickle.load(open("columns.pkl", "rb"))
+
+#use model again :-
+import pandas as pd
+
+new_data = pd.DataFrame(
+    [[1, 3, 1, 22, 1, 0, 7.25, 2]],
+    columns=columns
+)
+
+new_data = scaler.transform(new_data)
+
+prediction = model.predict(new_data)
+print(prediction)
+if prediction[0] == 1:
+    print("Survived")
+else:
+    print("Not Survived")
